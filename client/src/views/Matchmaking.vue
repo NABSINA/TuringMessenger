@@ -33,7 +33,7 @@ export default {
                                 setTimeout(() => {
                                     clearInterval(interval);
                                     localStorage.setItem('matchID', JSON.stringify(response.data.matchID));
-                                    this.$router.push('');
+                                    this.$router.push('message-bot');
                                 }, 3000);
                             })
                     }
