@@ -9,7 +9,7 @@ function readJSON(file: JSONFile): any {
     if (existsSync(getPath(file))) {
         return JSON.parse(readFileSync(getPath(file), 'utf-8'));
     } else {
-        throw new Error(`${getPath(file)} does not exits`);
+        return {};
     }
 }
 
@@ -23,14 +23,22 @@ function get(file: JSONFile) {
 
 function append(file: JSONFile, object: any): boolean {
     try {
-        object.createdAt = new Date();
-        let content: any = {};
-        if (existsSync(file)) {
-            content = readJSON(file);
-        }
+        const content = readJSON(file);
         Object.keys(object).forEach((key: string) => {
+            object[key].createdAt = new Date();
             content[key] = object[key];
         });
+        writeJSON(file, content);
+        return true;
+    } catch (error: any) {
+        return false;
+    }
+}
+
+function update(file: JSONFile, key: string, object: any): boolean {
+    try {
+        const content = readJSON(file);
+        content[key] = object;
         writeJSON(file, content);
         return true;
     } catch (error: any) {
@@ -55,5 +63,6 @@ function remove(file: JSONFile, key: string): boolean {
 export {
     get,
     append,
+    update,
     remove,
 };
