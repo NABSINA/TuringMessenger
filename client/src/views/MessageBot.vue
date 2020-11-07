@@ -3,7 +3,13 @@
     <header class="header">
     <div>
         <div class="message-bot">
+            <span style="float:left;">{{timeRemaining}}</span>
             <h1>Message Bot</h1>
+            <span style="position:absolute; top:4px; right: 4px;">
+                <router-link to="voterfraud">
+                    Vote
+                </router-link>
+            </span>
         </div>
     </div>
     </header>
@@ -58,7 +64,10 @@ export default {
                             username: this.usernames[x.userID],
                         }
                     });
-                    this.timeRemaining = response.data.timeRemaining;
+            this.timeRemaining = response.data.timeRemaining;
+            if (this.timeRemaining && this.timeRemaining.includes('-')) {
+                this.$router.push('voterfraud');
+            }
         });
      }, 1000)
     },
