@@ -1,5 +1,6 @@
 import { GenericResponse } from '../models/generic-response.model';
 import { JSONFile } from '../data/JSONFile.enum';
+import { Match } from '../models/match.model';
 import { User } from '../models/user.model';
 import { uuidv4 } from '../services/helper';
 import * as data from '../data';
@@ -12,8 +13,13 @@ router.get('/:uuid', async (req, res) => {
     const user: User = data.get(JSONFile.users)[uuid];
     if (user) {
         if (user.searchingForOpponent) {
-            const findMatchWithUser = (userUUID: string): string[] =>
-                matches[Object.keys(matches).find(key => matches[key].includes(userUUID))] as string[];
+            const findMatchWithUser = (userUUID: string): Match => {
+                const matchID = Object.keys(matches).find(key => matches[key].includes(userUUID));
+                return {
+                    matchID,
+                    userIDs: matches[matchID] as string[]
+                } as Match;
+            };
             const matches = data.get(JSONFile.matches) as {[key: string]: string[]};
             const match = findMatchWithUser(uuid);
             if (match) {

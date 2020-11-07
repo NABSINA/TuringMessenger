@@ -3,6 +3,7 @@ import cors from 'cors';
 import {
     accountController,
     matchController,
+    messagesController,
 } from './controllers';
 
 const app = express();
@@ -24,6 +25,7 @@ api.get('/', (req, res) => {
 });
 api.use('/match', matchController);
 api.use('/account', accountController);
+api.use('/messages', messagesController);
 
 app.use('/api/v1', api);
 
