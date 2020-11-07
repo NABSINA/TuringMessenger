@@ -16,13 +16,11 @@
                     <h4 class="message-title">{{message.message}}</h4>
                     <small class="text-muted float-right">@{{message.username}}</small>
                 </div>
-                
             </div>
-        
     </div>
     <br>
         <div class="form">
-        <input type="text" name="message" v-model="message" placeholder="Enter your message...">
+        <input type="text" name="message" v-on:keyup.enter="sendMessage" v-model="message" placeholder="Enter your message...">
         <button @click="sendMessage" class="btn">Send</button>
         </div>
     </div>
@@ -70,6 +68,7 @@ export default {
                 .then(() => {
                     console.log(this.$router);
                     this.$router.push('message-bot');
+                    this.message = '';
                 });
         }
     }
