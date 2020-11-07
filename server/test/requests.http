@@ -1,0 +1,10 @@
+@BASE_URL = http://localhost:5000/api/v1
+
+###
+POST {{BASE_URL}}/account/create/Nate314
+
+###
+GET {{BASE_URL}}/account/e82220ee-5449-423d-8dbd-a506432d120f
+
+###
+POST {{BASE_URL}}/account/destroy/e82220ee-5449-423d-8dbd-a506432d120f
