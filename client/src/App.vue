@@ -1,33 +1,44 @@
 <template>
-   <div id="app">
-     <Header />
-     <NewUser />
-        
-   </div>
+  <div>
+    <div id="app">
+    </div>
+    <router-view/>
+  </div>
 </template>
 
-<script>
-
-import Header from './components/layout/Header';
-import NewUser from './components/NewUser';
-
-export default {
-  name: 'App',
-  components: {
-    Header,
-    NewUser
-  }
-}
-</script>
-
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
 }
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.4;
-  }
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.4;
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  background: #555;
+  color: #fff;
+  padding: 20px 40px;
+  cursor: pointer;
+}
 </style>
