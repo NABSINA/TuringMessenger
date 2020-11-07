@@ -16,7 +16,7 @@
 </template>
 
 <script>
-// import * as api from '../services/api';
+import * as api from '../services/api';
 
 export default {
     name: "MessageBot",
@@ -27,22 +27,20 @@ export default {
             timeRemaining: '3:00',
         }
     },
-    mounted(){
+    created(){
         setInterval(() => {
-         api.getMessages(JSON.parse(localStorage.getItem('matchID')))
+            api.getMessages(JSON.parse(localStorage.getItem('matchID')))
                 .then(response => {
-                    console.log(response);
                     this.messages = response.data.messages;
                     this.timeRemaining = response.data.timeRemaining;
-        }, 500);
+        });
     
-     })
+     }, 1000)
     },
     methods: {
         sendMessage() {
             api.postMessage(JSON.parse(localStorage.getItem('matchID')),JSON.parse(localStorage.getItem('userID')), this.message)
-                .then(response => {
-                    localStorage.setItem('userID', JSON.stringify(response.data.message));
+                .then(() => {
                     console.log(this.$router);
                     this.$router.push('message-bot');
                 });

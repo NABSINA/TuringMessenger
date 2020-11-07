@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const api_url = 'http://nathang2018:5000/api/v1';
+const api_url = 'http://10.0.0.30:5000/api/v1';
 
 async function createAccount(username) {
     return axios.post(`${api_url}/account/create/${username}`);
