@@ -45,7 +45,7 @@ router.get('/all/:uuid', async (req, res) => {
     const users = data.get(JSONFile.users);
     const botIDs: string[] = match.userIDs
         .filter(x => (users[x] as User).isBot);
-    if (!botIDs.includes(messages[messages.length - 1].userID)) {
+    if (messages && !botIDs.includes(messages[messages.length - 1].userID)) {
         botIDs.forEach(botID => {
             setTimeout(async () => {
                 try {
@@ -60,7 +60,13 @@ router.get('/all/:uuid', async (req, res) => {
             }, 1000);
         });
     }
-    res.json(data.get(JSONFile.messages)[uuid] || []);
+    const timeAllotted = 3 * 60;
+    const secondsLeft = timeAllotted + Math.floor((new Date(match.createdAt).getTime() - new Date().getTime()) / 1000);
+    const timeRemaining = `${`${Math.floor(secondsLeft / 60)}`.padStart(2, '0')}:${`${secondsLeft % 60}`.padStart(2, '0')}`;
+    res.json({
+        timeRemaining,
+        messages: data.get(JSONFile.messages)[uuid] || []
+    });
 });
 
 export default router;

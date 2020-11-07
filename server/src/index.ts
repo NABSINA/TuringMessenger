@@ -4,6 +4,7 @@ import {
     accountController,
     matchController,
     messagesController,
+    voteController,
 } from './controllers';
 
 const app = express();
@@ -26,6 +27,7 @@ api.get('/', (req, res) => {
 api.use('/match', matchController);
 api.use('/account', accountController);
 api.use('/messages', messagesController);
+api.use('/vote', voteController);
 
 app.use('/api/v1', api);
 

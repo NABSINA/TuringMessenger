@@ -1,7 +1,7 @@
 import { HttpClient } from './http-client';
 
 function getNextMessage(messages: string[]): Promise<string> {
-    // return HttpClient.post('/api/v1/nextmessage', messages);
+    // return HttpClient.get(`/converse/${messages.join('\n')}`);
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve('fake AI message');
