@@ -44,7 +44,7 @@ router.get('/all/:uuid', async (req, res) => {
     const match = data.get(JSONFile.matches)[uuid] as Match;
     const users = data.get(JSONFile.users);
     const botIDs: string[] = match.userIDs
-        .filter(x => (users[x] as User).isBot);
+        .filter(x => users[x] && (users[x] as User).isBot);
     if (messages && !botIDs.includes(messages[messages.length - 1].userID)) {
         botIDs.forEach(botID => {
             setTimeout(async () => {
