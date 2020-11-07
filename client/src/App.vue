@@ -1,6 +1,7 @@
 <template>
    <div id="app">
      <Header />
+     <NewUser />
         
    </div>
 </template>
@@ -8,11 +9,13 @@
 <script>
 
 import Header from './components/layout/Header';
+import NewUser from './components/NewUser';
 
 export default {
   name: 'App',
   components: {
-    Header
+    Header,
+    NewUser
   }
 }
 </script>
