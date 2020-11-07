@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import * as api from '../services/api';
+// import * as api from '../services/api';
 
 export default {
     name: "MessageBot",
