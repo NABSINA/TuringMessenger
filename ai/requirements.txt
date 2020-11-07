@@ -1,0 +1,4 @@
+flask
+simpletransformers
+tokenizers==0.9.2
+torch

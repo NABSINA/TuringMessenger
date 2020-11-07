@@ -1,0 +1,6 @@
+@URL = https://localhost:5000/converse
+
+###
+GET {{URL}}/converse/hello
+
+###
