@@ -1,6 +1,7 @@
 import logging
 import flask
 from simpletransformers.language_generation import LanguageGenerationModel
+import socket
 
 import os.path
 
@@ -11,7 +12,7 @@ app = flask.Flask(__name__)
 #transformers_logger = logging.getLogger("transformers")
 #transformers_logger.setLevel(logging.WARNING)
 
-model = LanguageGenerationModel("gpt2", "gpt2", use_cuda=False)
+model = LanguageGenerationModel("gpt2", "distilgpt2", use_cuda=False)
 
 #model_args = ConvAIArgs()
 #model_args.max_history = 5
@@ -33,4 +34,4 @@ def converse(message: str) -> str:
         ].strip()
     return res
 
-app.run()
+app.run(host=socket.gethostbyname(socket.gethostname()), port=8181)
