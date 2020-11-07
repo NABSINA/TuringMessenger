@@ -30,7 +30,8 @@ router.get('/:uuid', async (req, res) => {
     const voteResults = data.get(JSONFile.votes)[uuid];
     const users = data.get(JSONFile.users);
     const matches = data.get(JSONFile.matches);
-    Object.keys(voteResults).filter(x => x !== 'createdAt').forEach(userID => {
+    delete voteResults.createdAt;
+    Object.keys(voteResults).forEach(userID => {
         const otherUserID = (matches[uuid] as Match).userIDs.filter(x => x !== userID)[0];
         voteResults[userID] = {
             vote: voteResults[userID],

@@ -57,7 +57,7 @@ router.get('/all/:uuid', async (req, res) => {
                 } catch (ex) {
                     console.error(ex);
                 }
-            }, 1000);
+            }, 0);
         });
     }
     const timeAllotted = 3 * 60;
