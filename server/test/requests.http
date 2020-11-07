@@ -13,19 +13,19 @@ POST {{BASE_URL}}/account/create/Amadeusine
 POST {{BASE_URL}}/account/create/Angad
 
 ###
-GET {{BASE_URL}}/account/6b8f440c-02c5-45b4-b0c9-6b2348c0c0a7
+GET {{BASE_URL}}/account/799968e2-822e-447f-8edc-c84f86ce47eb
 
 ###
-GET {{BASE_URL}}/account/29dfc67c-ce74-44e5-a1bf-c534181704c4
+GET {{BASE_URL}}/account/c59a5748-cd3b-4bd9-94ff-40ca2bf841a9
 
 ###
 POST {{BASE_URL}}/account/destroy/6c1c339c-dfa0-4f6a-9dab-14e0062ea9f0
 
 ###
-GET {{BASE_URL}}/match/29dfc67c-ce74-44e5-a1bf-c534181704c4
+GET {{BASE_URL}}/match/799968e2-822e-447f-8edc-c84f86ce47eb
 
 ###
-GET {{BASE_URL}}/match/6b8f440c-02c5-45b4-b0c9-6b2348c0c0a7
+GET {{BASE_URL}}/match/c59a5748-cd3b-4bd9-94ff-40ca2bf841a9
 
 ###
 GET {{BASE_URL}}/match/cbdd0338-4bbd-4c58-90ec-774395bde1b9
@@ -34,10 +34,14 @@ GET {{BASE_URL}}/match/cbdd0338-4bbd-4c58-90ec-774395bde1b9
 GET {{BASE_URL}}/match/e898d20e-a9d6-4dda-89ce-c3941f83513e
 
 ###
-POST {{BASE_URL}}/messages/send/6b8f440c-02c5-45b4-b0c9-6b2348c0c0a7
+POST {{BASE_URL}}/messages/send/4a873540-d13a-4f7e-b3b6-0eeb7db2275e
 Content-Type: application/json
 
 {
-    "userID": "e898d20e-a9d6-4dda-89ce-c3941f83513e",
-    "message": "Testing 03"
+    "userID": "c59a5748-cd3b-4bd9-94ff-40ca2bf841a9",
+    "message": "Hello there"
 }
+
+###
+GET {{BASE_URL}}/messages/all/4a873540-d13a-4f7e-b3b6-0eeb7db2275e
+Content-Type: application/json

@@ -18,8 +18,16 @@ router.get('/:uuid', async (req, res) => {
 });
 
 router.post('/create/:userID', async (req, res) => {
+    const typeIndex = Math.floor(Math.random() * 3);
     const uuid = uuidv4();
-    data.append(JSONFile.users, {[uuid]: {username: req.params.userID}});
+    const newUser = {
+        username: req.params.userID,
+        isBot: false,
+        isFooledByHuman: typeIndex === 0,
+        isFooledByBot: typeIndex === 1,
+        isFooling: typeIndex === 2,
+    } as User;
+    data.append(JSONFile.users, {[uuid]: newUser});
     res.json({ uuid });
 });
 
