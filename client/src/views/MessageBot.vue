@@ -1,4 +1,5 @@
 <template>
+<div>
     <header class="header">
     <div>
         <div class="message-bot">
@@ -6,6 +7,12 @@
         </div>
     </div>
     </header>
+    <br>
+        <div class="form">
+        <input type="text" name="message" v-model="message" placeholder="Enter your message...">
+        <button @click="sendMessage" class="btn">Send</button>
+    </div>
+    </div>
 </template>
 
 <script>
@@ -13,9 +20,33 @@ import * as api from '../services/api';
 
 export default {
     name: "MessageBot",
+    data() {
+        return {
+            message: '',
+            messages: [],
+            timeRemaining: '3:00',
+        }
+    },
+    mounted(){
+        setInterval(() => {
+         api.getMessages(JSON.parse(localStorage.getItem('matchID')))
+                .then(response => {
+                    console.log(response);
+                    this.messages = response.data.messages;
+                    this.timeRemaining = response.data.timeRemaining;
+        }, 500);
     
-    messages(){
-       
+     })
+    },
+    methods: {
+        sendMessage() {
+            api.postMessage(JSON.parse(localStorage.getItem('matchID')),JSON.parse(localStorage.getItem('userID')), this.message)
+                .then(response => {
+                    localStorage.setItem('userID', JSON.stringify(response.data.message));
+                    console.log(this.$router);
+                    this.$router.push('message-bot');
+                });
+        }
     }
 }
 </script>
@@ -31,5 +62,8 @@ export default {
     .header a {
         color: #fff;
         padding-right: 5px;
+    }
+     input[type="text"]{
+        padding: 15px;
     }
 </style>

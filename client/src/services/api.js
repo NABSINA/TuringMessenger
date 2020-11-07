@@ -15,10 +15,17 @@ async function getMatch(userID) {
 }
 
 async function getMessages(matchID) {
-    return axios.get(`${api_url}/messages/send/${matchID}`);
+    return axios.get(`${api_url}/messages/all/${matchID}`);
 }
+
+async function postMessage(matchID, userID, message) {
+    return axios.post(`${api_url}/messages/send/${matchID}`, {userID: userID, message: message});
+}
+
 export {
     createAccount,
     getAccount,
     getMatch,
+    getMessages,
+    postMessage
 };
