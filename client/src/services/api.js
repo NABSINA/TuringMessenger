@@ -22,10 +22,20 @@ async function postMessage(matchID, userID, message) {
     return axios.post(`${api_url}/messages/send/${matchID}`, {userID: userID, message: message});
 }
 
+async function postVote(data) {
+    return axios.post(`${api_url}/vote/${JSON.parse(localStorage.getItem('matchID'))}`, {userID: localStorage.getItem('userID'), ...data});
+}
+
+async function getVote() {
+    return axios.get(`${api_url}/vote/${JSON.parse(localStorage.getItem('matchID'))}`);
+}
+
 export {
     createAccount,
     getAccount,
     getMatch,
     getMessages,
-    postMessage
+    postMessage,
+    postVote,
+    getVote,
 };
