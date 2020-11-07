@@ -15,7 +15,7 @@
       >?
     </h1>
     <button @click="conform">Yes</button>
-    <button v-if="!times_up" @click="reset">No</button>
+    <button @click="reset">No</button>
   </div>
 </template>
 
@@ -26,12 +26,19 @@ export default {
   name: "VoterFrog",
   data() {
     return {
-      times_up: false,
+      times_up: true,
       choice: "",
       has_chosen: false,
       completed: false,
       won: undefined,
     };
+  },
+  mounted() {
+    api.getMessages(JSON.parse(localStorage.getItem('matchID'))).then(resp => {
+        if (!(resp.data.timeRemaining && resp.data.timeRemaining.includes('-'))) {
+          this.times_up = false;
+        }
+    });
   },
   methods: {
     choose(value) {
