@@ -1,3 +1,3 @@
 # Turing Messenger AI
 
-// TODO
+This portion of Turing Messenger defines the automated text or content generation of the chat functionality.
