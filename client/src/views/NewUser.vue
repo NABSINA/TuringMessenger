@@ -1,6 +1,6 @@
 <template>
-    <div class="form">
-        <input type="text" name="username" v-model="username" placeholder="New Username...">
+    <div>
+        <input type="text" name="username" v-model="username" placeholder="New Username..."><br><br>
         <button @click="user" class="btn">Go</button>
     </div>
 </template>
@@ -29,16 +29,21 @@ export default {
 </script>
 
 <style scoped>
-    .form {
-        display: flex;
-    }
-
     input[type="text"]{
-        flex: 15;
+        height: 30px;
+        width: 400px;
+        margin-top: 15%;
         padding: 15px;
     }
 
-    button {
-        flex: 2;
+    .btn {
+        width: 100px;
+        height: 30px;
+        margin: 0 auto;
+        padding: 0;
+        display: table-cell;
+        vertical-align: middle;
+        outline-style: auto;
+        outline-color: black;
     }
 </style>

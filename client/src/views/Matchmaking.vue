@@ -4,9 +4,9 @@
             <h1>Matchmaking</h1>
         </div>
         <br>
-        <div>Loading . . .</div><br>
-        <div v-if="isFooling === true">You are an <strong>imposter</strong></div>
-        <div v-if="isFooling === false">You are a <strong>guesser</strong></div>
+        <div class="search"><h1>Searching For Opponent . . .</h1></div><br><br><br><br>
+        <div v-if="isFooling === true"><p class="role">You are an <strong>imposter</strong></p></div>
+        <div v-if="isFooling === false"><p class="role">You are a <strong>guesser</strong></p></div>
     </div>
 </template>
 
@@ -50,5 +50,13 @@ export default {
         color: #fff;
         text-align: center;
         padding: 10px;
+    }
+
+    .search {
+        font-size: 15px;
+    }
+
+    .role {
+        font-size: 35px;
     }
 </style>
