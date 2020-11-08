@@ -11,7 +11,7 @@
   <div v-else-if="completed" style="margin-top:50px;">
     <h1 v-if="won">You won!</h1>
     <h1 v-else>You lost!</h1>
-    <button @click="$router.push('home')">Play again</button>
+    <button @click="goHome">Play again</button>
   </div>
   <div v-else>
     <h1>
@@ -47,6 +47,9 @@ export default {
     });
   },
   methods: {
+    goHome() {
+      window.location.hash = '#/';
+    },
     choose(value) {
       this.choice = value;
       this.has_chosen = true;
