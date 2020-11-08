@@ -47,7 +47,7 @@ export default {
         return {
             message: '',
             messages: [],
-            timeRemaining: '3:00',
+            timeRemaining: '',
             usernames: {},
             currentUserID: '',
         }
