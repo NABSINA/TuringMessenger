@@ -11,10 +11,16 @@
     <div>
         <h2><strong>Messages</strong></h2>
         <br>
-            <div class="message" v-for="(message, index) in messages" :key="index">
-                <div class="clearfix">
-                    <h4 class="message-title">{{message.message}}</h4>
-                    <small class="text-muted float-right">@{{message.username}}</small>
+            <div id="" class="scroll-view" style="overflow:scroll; height:400px;">
+                <div class="message" v-for="(message, index) in messages" :key="index">
+                    <div v-if="message.userID ===currentUserID" class="box1 user1">
+                        <h4 class="message-title">{{message.message}}</h4>
+                        <small class="text-muted float-right">@{{message.username}}</small>
+                    </div>    
+                    <div v-else class="box2 user2">
+                        <h4 class="message-title">{{message.message}}</h4>
+                        <small class="text-muted float-right">@{{message.username}}</small>
+                    </div>    
                 </div>
             </div>
     </div>
@@ -37,10 +43,12 @@ export default {
             messages: [],
             timeRemaining: '3:00',
             usernames: {},
+            currentUserID: '',
         }
     },
     created(){
-        api.getMatch(JSON.parse(localStorage.getItem('userID')))
+        this.currentUserID = JSON.parse(localStorage.getItem('userID'));
+        api.getMatch(this.currentUserID)
                 .then(response => {
                     response.data.userIDs.forEach(userID => {
                         api.getAccount(userID)
@@ -55,6 +63,7 @@ export default {
                     this.messages = response.data.messages.map(x => {
                         return {
                             message: x.message,
+                            userID: x.userID,
                             username: this.usernames[x.userID],
                         }
                     });
@@ -103,5 +112,73 @@ export default {
     .message-text {
         color: gray;
         margin-bottom: 0;
+    }
+
+    .box1 {
+        width: 300px;
+        margin: 5px auto;
+        border-radius: 15px;
+        background: #07447c;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        font-weight: 900;
+        font-family: arial;
+        position: relative;
+        }
+    
+    .box2 {
+        width: 300px;
+        margin: 5px auto;
+        border-radius: 15px;
+        background: #a4acab;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        font-weight: 900;
+        font-family: arial;
+        position: relative;
+        }
+
+    .user1:before {
+        content: "";
+        width: 0px;
+        height: 0px;
+        position: absolute;
+        border-left: 15px solid #07447c;
+        border-right: 15px solid transparent;
+        border-top: 15px solid #07447c;
+        border-bottom: 15px solid transparent;
+        right: -16px;
+        top: 0px;
+        }
+
+    .user2:before {
+        content: "";
+        width: 0px;
+        height: 0px;
+        position: absolute;
+        border-left: 15px solid transparent;
+        border-right: 15px solid #a4acab;
+        border-top: 15px solid #a4acab;
+        border-bottom: 15px solid transparent;
+        left: -16px;
+        top: 0px;
+        }
+
+    .scroll-view{
+        padding-left: 5px;
+    }
+    
+    input[type="text"]{
+        height: 45px;
+        width: 300px;
+        padding: 15px;
+    }
+
+    .btn {
+        padding: 15px;
+        outline-style: auto;
+        outline-color: black;
     }
 </style>
