@@ -3,13 +3,17 @@
     <header class="header">
     <div>
         <div class="message-bot">
-            <span style="float:left;">{{timeRemaining}}</span>
+            <strong style="position:absolute; top:4px; left: 4px;">
+                <h1>
+                    {{timeRemaining}}
+                </h1>
+            </strong>
             <h1>Message Bot</h1>
-            <span style="position:absolute; top:4px; right: 4px;">
+            <h1 style="position:absolute; top:4px; right: 4px;">
                 <router-link to="voterfraud">
                     Vote
                 </router-link>
-            </span>
+            </h1>
         </div>
     </div>
     </header>
