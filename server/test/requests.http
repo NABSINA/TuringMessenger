@@ -1,0 +1,59 @@
+@BASE_URL = http://nathang2018:5000/api/v1
+
+###
+POST {{BASE_URL}}/account/create/Nate314
+
+###
+POST {{BASE_URL}}/account/create/Bobbyjuba
+
+###
+POST {{BASE_URL}}/account/create/Amadeusine
+
+###
+POST {{BASE_URL}}/account/create/Angad
+
+###
+GET {{BASE_URL}}/account/9455e7a8-e735-459d-a041-2e577451ecba
+
+###
+GET {{BASE_URL}}/account/c59a5748-cd3b-4bd9-94ff-40ca2bf841a9
+
+###
+POST {{BASE_URL}}/account/destroy/6c1c339c-dfa0-4f6a-9dab-14e0062ea9f0
+
+###
+GET {{BASE_URL}}/match/5cf5dbf0-a357-4e4a-a509-2837e4864395
+
+###
+GET {{BASE_URL}}/match/853992e7-073f-4d4f-9d6f-5e410991d866
+
+###
+GET {{BASE_URL}}/match/9e5f1e8c-41cd-41e4-b4d2-cdd576c4b149
+
+###
+GET {{BASE_URL}}/match/e898d20e-a9d6-4dda-89ce-c3941f83513e
+
+###
+POST {{BASE_URL}}/messages/send/29ae74b9-f7d9-44fd-bd5f-4057c4d3cb3c
+Content-Type: application/json
+
+{
+    "userID": "5cf5dbf0-a357-4e4a-a509-2837e4864395",
+    "message": "Hello there"
+}
+
+###
+GET {{BASE_URL}}/messages/all/29ae74b9-f7d9-44fd-bd5f-4057c4d3cb3c
+Content-Type: application/json
+
+###
+POST {{BASE_URL}}/vote/29ae74b9-f7d9-44fd-bd5f-4057c4d3cb3c
+Content-Type: application/json
+
+{
+    "userID": "5cf5dbf0-a357-4e4a-a509-2837e4864395",
+    "vote": true
+}
+
+###
+GET {{BASE_URL}}/vote/29ae74b9-f7d9-44fd-bd5f-4057c4d3cb3c
